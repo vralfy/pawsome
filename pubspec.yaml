@@ -1,0 +1,34 @@
+name: p6
+description: Pawsome Programmable Personal Penguin Patch Patrol
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.19.6 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.0
+  dartssh2: ^2.0.0
+  p6_base:
+    path: ./p6_base
+  p6_ui:
+    path: ./p6_ui
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/json/
+    - assets/json/i18n/
+
+# flutter_icons:
+#   android: "launcher_icon"
+#   ios: true
+#   image_path: "assets/images/icon.png"
