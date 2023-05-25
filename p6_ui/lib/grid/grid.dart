@@ -39,7 +39,7 @@ class ResponsibleGrid extends ResponsibleWidget {
     this.cells,
     this.mainAxisAlignment,
     super.size = 12,
-    super.size_xs = 1,
+    super.size_xs,
     super.size_sm,
     super.size_lg,
     super.size_xl,
@@ -81,7 +81,7 @@ class ResponsibleGridCell extends ResponsibleWidget {
     this.child, {
     Key? key,
     super.size = 1,
-    super.size_xs = 12,
+    super.size_xs,
     super.size_sm,
     super.size_lg,
     super.size_xl,

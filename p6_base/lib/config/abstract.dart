@@ -33,10 +33,10 @@ abstract class AbstractConfig
   bool get loaded => configFilesLoaded && settings != null;
 
   load() async {
-    Logger.debug('[config] Loading config.json');
-    P6Config.configSettings = await SharedPreferences.getInstance();
-
     await loadConfigFiles();
+
+    Logger.debug('[config] Loading preferences');
+    P6Config.configSettings = await SharedPreferences.getInstance();
 
     if (loaded) {
       Logger.debug('[config] Config loading complete');

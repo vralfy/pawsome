@@ -11,6 +11,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.0
   dartssh2: ^2.0.0
+  font_awesome_flutter: ^10.4.0
   p6_base:
     path: ./p6_base
   p6_ui:
