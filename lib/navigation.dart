@@ -8,6 +8,7 @@ class P6NavigationItems {
     P6Config.instance.navbarItems = () {
       return [
         const NavigationSidebarItem(title: 'Home', route: '/'),
+        const NavigationSidebarItem(title: 'Hosts', route: '/hosts'),
       ];
     };
   }

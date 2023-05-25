@@ -16,8 +16,10 @@ class Welcome extends P6StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Headline1(text: tr('Welcome')),
+              const Headline1(text: 'Pawsome Programmable Personal Penguin Patch Patrol'),
               Text('${configuration.application_version} (${configuration.application_build})'),
+              Text(configuration.theme),
+              // Text(configuration.themes.last),
             ],
           ),
         ],
