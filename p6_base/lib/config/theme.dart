@@ -8,15 +8,15 @@ import 'package:p6_base/logger.dart';
 mixin ConfigTheme on ConfigFromJSON, ConfigFromSettings {
   List<dynamic> get themes {
     List<dynamic> ret = [];
-    (getByPath(str: 'layout, list', defaultValue: []) as List<dynamic>).forEach((e) => ret.add({
+    (getByPath(str: 'themes, list', defaultValue: [], config: jsonFiles['themes']?.content) as List<dynamic>).forEach((e) => ret.add({
           'key': e,
-          'name': getByPath(str: 'layout, themes, $e, name', defaultValue: 'Unnamed $e theme'),
+          'name': getByPath(str: 'themes, themes, $e, name', defaultValue: 'Unnamed $e theme', config: jsonFiles['themes']?.content),
         }));
     Logger.trace('[config] ${jsonEncode(ret)}');
     return ret;
   }
 
-  dynamic getThemeProperty({String? str, dynamic defaultValue}) => getByPath(str: 'layout, themes, $theme, $str', defaultValue: defaultValue);
+  dynamic getThemeProperty({String? str, dynamic defaultValue}) => getByPath(str: 'themes, themes, $theme, $str', defaultValue: defaultValue, config: jsonFiles['themes']?.content);
 
   MaterialColor getThemeColor(String name, MaterialColor defaultColor) {
     String? hexCode = getThemeProperty(str: 'color, $name');
@@ -39,7 +39,8 @@ mixin ConfigTheme on ConfigFromJSON, ConfigFromSettings {
     });
   }
 
-  String get theme => settings?.getString('THEME') ?? getByPath(str: 'layout, theme', defaultValue: 'default');
+  String get theme => settings?.getString('THEME') ?? getByPath(str: 'themes, default', defaultValue: 'default', config: jsonFiles['themes']?.content);
+
   bool get theme_dark_mode {
     return ['true', 'yes', '1', true].contains(getThemeProperty(str: 'darkMode', defaultValue: false));
   }

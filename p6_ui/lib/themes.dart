@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:p6_base/config.dart';
+import 'package:p6_base/logger.dart';
 
 class Themes with Configuration {
   static ThemeData get config => P6Config.instance.theme_simple_mode ? Themes().simpleTheme : Themes().theme;
@@ -20,6 +21,7 @@ class Themes with Configuration {
 
   /// Creates a new theme
   ThemeData get theme {
+    Logger.info('Loading theme ${configuration.theme} (${configuration.theme_dark_mode ? 'dark' : 'light'}|${configuration.theme_simple_mode ? 'simple' : 'normal'})');
     TextTheme textTheme = TextTheme(
       bodyMedium: TextStyle(
         fontSize: configuration.font_size,
