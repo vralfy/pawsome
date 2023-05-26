@@ -3,7 +3,7 @@ import 'package:p6_ui/headline/headline.dart';
 import 'package:p6_ui/padding/padding.dart';
 import 'package:p6_ui/view.dart';
 import 'package:p6_ui/widget.dart';
-import 'package:p6_ui/loading/loadingIndicator.dart';
+import 'package:p6_ui/loading/loading_indicator.dart';
 
 class Loading extends P6StatelessWidget {
   const Loading({super.key});

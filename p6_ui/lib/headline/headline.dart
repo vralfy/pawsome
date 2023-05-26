@@ -21,7 +21,7 @@ class Headline1 extends P6StatelessWidget {
         tr(text),
         style: TextStyle(
           fontWeight: bold ? FontWeight.bold : FontWeight.normal,
-          fontSize: configuration.font_size * fontSizeFactor,
+          fontSize: configuration.fontSize * fontSizeFactor,
         ),
       ),
     );

@@ -3,5 +3,5 @@ import 'package:p6_base/config/from_json.dart';
 import 'package:p6_base/config/from_settings.dart';
 
 mixin ConfigSettings on ConfigFromJSON, ConfigFromSettings, ConfigDefaults {
-  String get language => (settings?.getString('LANGUAGE') ?? default_language).trim();
+  String get language => (settings?.getString('LANGUAGE') ?? defaultLanguage).trim();
 }

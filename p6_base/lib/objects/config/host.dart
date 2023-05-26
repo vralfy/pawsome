@@ -1,5 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:p6_base/objects/abstract.dart';
+import 'package:p6_base/objects/config/check.dart';
 import 'package:p6_base/objects/config/ssh.dart';
 
 part 'host.g.dart';
@@ -16,6 +17,8 @@ class ConfigHost extends AbstractObject {
   final String address;
   @JsonKey(defaultValue: null, disallowNullValue: false)
   final ConfigSSH? ssh;
+  @JsonKey(defaultValue: null, disallowNullValue: false)
+  final ConfigCheck? check;
 
   ConfigHost({
     required this.name,
@@ -23,6 +26,7 @@ class ConfigHost extends AbstractObject {
     required this.tag,
     required this.address,
     required this.ssh,
+    required this.check,
   });
 
   factory ConfigHost.fromJson(Map<String, dynamic> json) => _$ConfigHostFromJson(json);

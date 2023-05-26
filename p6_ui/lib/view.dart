@@ -77,7 +77,7 @@ class View with Translates {
   }
 
   static FloatingActionButtonLocation? _floatingActionButtonLocation(List<NavigationButton> floatingActionButton, List<NavigationButton> bottomNavigation) {
-    if (P6Config.instance.feature_speed_dial) {
+    if (P6Config.instance.featureSpeedDial) {
       return bottomNavigation.isEmpty ? FloatingActionButtonLocation.endFloat : FloatingActionButtonLocation.endDocked;
     }
     return null;
@@ -88,11 +88,11 @@ class View with Translates {
   }
 
   static Widget? _floatingActionButtonView(List<NavigationButton> floatingActionButton, List<NavigationButton> bottomNavigation) {
-    if (floatingActionButton.isEmpty || (floatingActionButton.length < P6Config.instance.min_floating_buttons && bottomNavigation.isNotEmpty)) {
+    if (floatingActionButton.isEmpty || (floatingActionButton.length < P6Config.instance.minFloatingButtons && bottomNavigation.isNotEmpty)) {
       return null;
     }
 
-    if (P6Config.instance.feature_speed_dial && (floatingActionButton.length > 1 || bottomNavigation.isNotEmpty)) {
+    if (P6Config.instance.featureSpeedDial && (floatingActionButton.length > 1 || bottomNavigation.isNotEmpty)) {
       return SpeedDial(
         animatedIcon: AnimatedIcons.menu_close,
         children: floatingActionButton
@@ -130,7 +130,7 @@ class View with Translates {
         mainAxisAlignment: _bottomNavigationAlignment(floatingActionButton, bottomNavigation),
         children: [
           ...bottomNavigation,
-          ...(floatingActionButton.length < P6Config.instance.min_floating_buttons ? floatingActionButton : []),
+          ...(floatingActionButton.length < P6Config.instance.minFloatingButtons ? floatingActionButton : []),
         ]
             .map((e) => IconButton(
                   onPressed: e.onPressed,

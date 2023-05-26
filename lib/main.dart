@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -46,8 +45,8 @@ class P6MainState extends P6State<P6Main> {
     Logger.info('starting main app');
     P6Config.refreshApp = refresh;
     P6Config.onConfigLoaded = () {
-      Future.delayed(Duration(seconds: 1)).whenComplete(() => setState(() {
-            P6Main.navigatorKey.currentState?.pushNamed(configuration.default_route);
+      Future.delayed(const Duration(seconds: 1)).whenComplete(() => setState(() {
+            P6Main.navigatorKey.currentState?.pushNamed(configuration.defaultRoute);
           }));
       P6Config.refreshApp();
     };
@@ -64,10 +63,10 @@ class P6MainState extends P6State<P6Main> {
       initialRoute: '/loading',
       builder: (context, child) => ErrorHandler.builder(context, child),
       routes: {
-        '/': (context) => Welcome(),
-        '/loading': (context) => Loading(),
+        '/': (context) => const Welcome(),
+        '/loading': (context) => const Loading(),
         '/hosts': (context) => const Hosts(),
-        '/error': (context) => ErrorHandler(),
+        '/error': (context) => const ErrorHandler(),
       },
     );
   }

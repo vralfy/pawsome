@@ -9,7 +9,7 @@ class NavigationButton {
     Color? color,
     String? title = 'Refresh',
   }) {
-    return NavigationButton(onPressed: onPressed, icon: icon, color: (color ?? P6Config.instance.color_secondary), title: title);
+    return NavigationButton(onPressed: onPressed, icon: icon, color: (color ?? P6Config.instance.colorSecondary), title: title);
   }
 
   static back({
@@ -18,7 +18,7 @@ class NavigationButton {
     Color? color,
     String? title = 'Back',
   }) {
-    return NavigationButton(onPressed: onPressed, icon: icon, color: (color ?? P6Config.instance.color_secondary), title: title);
+    return NavigationButton(onPressed: onPressed, icon: icon, color: (color ?? P6Config.instance.colorSecondary), title: title);
   }
 
   static cancel({
@@ -27,7 +27,7 @@ class NavigationButton {
     Color? color,
     String? title = 'Cancel',
   }) {
-    return NavigationButton(onPressed: onPressed, icon: icon, color: (color ?? P6Config.instance.color_secondary), title: title);
+    return NavigationButton(onPressed: onPressed, icon: icon, color: (color ?? P6Config.instance.colorSecondary), title: title);
   }
 
   final Function()? onPressed;

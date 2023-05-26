@@ -3,27 +3,27 @@ import 'package:p6_ui/widget.dart';
 
 abstract class ResponsibleWidget extends P6StatelessWidget {
   final int size;
-  final int? size_xs;
-  final int? size_sm;
-  final int? size_lg;
-  final int? size_xl;
+  final int? sizeXS;
+  final int? sizeSM;
+  final int? sizeLG;
+  final int? sizeXL;
 
   const ResponsibleWidget({
     Key? key,
     this.size = 1,
-    this.size_xs,
-    this.size_sm,
-    this.size_lg,
-    this.size_xl,
+    this.sizeXS,
+    this.sizeSM,
+    this.sizeLG,
+    this.sizeXL,
   }) : super(key: key);
 
   int get finalSize {
     int ret = size;
-    ret = configuration.screen_xs ? (size_xs ?? size_sm ?? size) : ret;
-    ret = configuration.screen_sm ? (size_sm ?? size_sm ?? size) : ret;
+    ret = configuration.screenXS ? (sizeXS ?? sizeSM ?? size) : ret;
+    ret = configuration.screenSM ? (sizeSM ?? sizeSM ?? size) : ret;
 
-    ret = configuration.screen_xl ? (size_xl ?? size_lg ?? size) : ret;
-    ret = configuration.screen_lg ? (size_lg ?? size_xl ?? size) : ret;
+    ret = configuration.screenXL ? (sizeXL ?? sizeLG ?? size) : ret;
+    ret = configuration.screenLG ? (sizeLG ?? sizeXL ?? size) : ret;
     return ret;
   }
 }
@@ -39,10 +39,10 @@ class ResponsibleGrid extends ResponsibleWidget {
     this.cells,
     this.mainAxisAlignment,
     super.size = 12,
-    super.size_xs,
-    super.size_sm,
-    super.size_lg,
-    super.size_xl,
+    super.sizeXS,
+    super.sizeSM,
+    super.sizeLG,
+    super.sizeXL,
   }) : super(key: key);
 
   @override
@@ -81,10 +81,10 @@ class ResponsibleGridCell extends ResponsibleWidget {
     this.child, {
     Key? key,
     super.size = 1,
-    super.size_xs,
-    super.size_sm,
-    super.size_lg,
-    super.size_xl,
+    super.sizeXS,
+    super.sizeSM,
+    super.sizeLG,
+    super.sizeXL,
   }) : super(key: key);
 
   @override

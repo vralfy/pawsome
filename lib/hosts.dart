@@ -13,6 +13,7 @@ class Hosts extends P6StatefulWidget {
 }
 
 class HostState extends P6State<Hosts> {
+  @override
   Widget build(BuildContext context) {
     return View.main(
       context,

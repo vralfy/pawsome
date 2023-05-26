@@ -15,6 +15,9 @@ ConfigHost _$ConfigHostFromJson(Map<String, dynamic> json) => ConfigHost(
       ssh: json['ssh'] == null
           ? null
           : ConfigSSH.fromJson(json['ssh'] as Map<String, dynamic>),
+      check: json['check'] == null
+          ? null
+          : ConfigCheck.fromJson(json['check'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ConfigHostToJson(ConfigHost instance) =>
@@ -24,4 +27,5 @@ Map<String, dynamic> _$ConfigHostToJson(ConfigHost instance) =>
       'tag': instance.tag,
       'address': instance.address,
       'ssh': instance.ssh,
+      'check': instance.check,
     };

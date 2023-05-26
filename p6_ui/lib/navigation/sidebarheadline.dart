@@ -27,7 +27,7 @@ class NavigationSidebarHeadline extends ISidebarItem {
       leading: FaIcon(icon),
     );
 
-    if (!P6Config.instance.feature_expandable_navigation) {
+    if (!P6Config.instance.featureExpandableNavigation) {
       return caption;
     }
     return ExpandablePanel(
@@ -40,6 +40,6 @@ class NavigationSidebarHeadline extends ISidebarItem {
   }
 
   List<ISidebarItem> get subMenu {
-    return P6Config.instance.feature_expandable_navigation ? [] : (children ?? []);
+    return P6Config.instance.featureExpandableNavigation ? [] : (children ?? []);
   }
 }

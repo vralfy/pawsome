@@ -41,21 +41,21 @@ mixin ConfigTheme on ConfigFromJSON, ConfigFromSettings {
 
   String get theme => settings?.getString('THEME') ?? getByPath(str: 'themes, default', defaultValue: 'default', config: jsonFiles['themes']?.content);
 
-  bool get theme_dark_mode {
+  bool get themeDarkMode {
     return ['true', 'yes', '1', true].contains(getThemeProperty(str: 'darkMode', defaultValue: false));
   }
 
-  bool get theme_simple_mode {
+  bool get themeSimpleMode {
     return ['true', 'yes', '1', true].contains(getThemeProperty(str: 'simple', defaultValue: false));
   }
 
-  double get font_size => double.parse(getThemeProperty(str: 'font, size', defaultValue: '12'));
-  double get padding_vertical => double.parse(getThemeProperty(str: 'padding, vertical', defaultValue: '2'));
-  double get padding_horizontal => double.parse(getThemeProperty(str: 'padding, horizontal', defaultValue: '10'));
-  int get min_floating_buttons => int.parse(getThemeProperty(str: 'floating_buttons, min', defaultValue: '1'));
+  double get fontSize => double.parse(getThemeProperty(str: 'font, size', defaultValue: '12'));
+  double get paddingVertical => double.parse(getThemeProperty(str: 'padding, vertical', defaultValue: '2'));
+  double get paddingHorizontal => double.parse(getThemeProperty(str: 'padding, horizontal', defaultValue: '10'));
+  int get minFloatingButtons => int.parse(getThemeProperty(str: 'floating_buttons, min', defaultValue: '1'));
 
   // Colors
-  MaterialColor get color_white {
+  MaterialColor get colorWhite {
     return const MaterialColor(0xFFFFFFFF, {
       50: Color.fromRGBO(255, 255, 255, 1),
       100: Color.fromRGBO(255, 255, 255, 1),
@@ -70,7 +70,7 @@ mixin ConfigTheme on ConfigFromJSON, ConfigFromSettings {
     });
   }
 
-  MaterialColor get color_black {
+  MaterialColor get colorBlack {
     return const MaterialColor(0xFF000000, {
       50: Color.fromRGBO(0, 0, 0, 1),
       100: Color.fromRGBO(0, 0, 0, 1),
@@ -85,17 +85,17 @@ mixin ConfigTheme on ConfigFromJSON, ConfigFromSettings {
     });
   }
 
-  MaterialColor get color_primary => getThemeColor('primary', Colors.indigo);
-  MaterialColor get color_secondary => getThemeColor('secondary', Colors.deepOrange);
-  MaterialColor get color_tertiary => getThemeColor('secondary', Colors.cyan);
-  MaterialColor get color_background => getThemeColor('background', getThemeColor('white', color_white));
-  MaterialColor get color_foreground => getThemeColor('foreground', getThemeColor('black', color_black));
-  MaterialColor get color_danger => getThemeColor('danger', Colors.red);
-  MaterialColor get color_warning => getThemeColor('warning', Colors.yellow);
-  MaterialColor get color_success => getThemeColor('success', Colors.green);
-  MaterialColor get color_info => getThemeColor('info', Colors.indigo);
-  MaterialColor get color_ok => getThemeColor('ok', Colors.green);
-  MaterialColor get color_cancel => getThemeColor('cancel', Colors.red);
-  MaterialColor get color_inactive => getThemeColor('inactive', Colors.grey);
-  MaterialColor get color_done => getThemeColor('ok', Colors.blueGrey);
+  MaterialColor get colorPrimary => getThemeColor('primary', Colors.indigo);
+  MaterialColor get colorSecondary => getThemeColor('secondary', Colors.deepOrange);
+  MaterialColor get colorTertiary => getThemeColor('secondary', Colors.cyan);
+  MaterialColor get colorBackground => getThemeColor('background', getThemeColor('white', colorWhite));
+  MaterialColor get colorForeground => getThemeColor('foreground', getThemeColor('black', colorBlack));
+  MaterialColor get colorDanger => getThemeColor('danger', Colors.red);
+  MaterialColor get colorWarning => getThemeColor('warning', Colors.yellow);
+  MaterialColor get colorSuccess => getThemeColor('success', Colors.green);
+  MaterialColor get colorInfo => getThemeColor('info', Colors.indigo);
+  MaterialColor get colorOk => getThemeColor('ok', Colors.green);
+  MaterialColor get colorCancel => getThemeColor('cancel', Colors.red);
+  MaterialColor get colorInactive => getThemeColor('inactive', Colors.grey);
+  MaterialColor get colorDone => getThemeColor('ok', Colors.blueGrey);
 }

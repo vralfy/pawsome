@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:p6_base/config.dart';
-import 'package:p6_base/logger.dart';
 import 'package:p6_ui/padding/padding.dart';
 import 'package:p6_ui/widget.dart';
 
 class ErrorHandler extends P6StatelessWidget {
+  const ErrorHandler({super.key});
+
   static builder(BuildContext context, Widget? child) {
     Widget errorWidget = _getErrorDisplayWidget();
     if (child is Scaffold || child is Navigator) {
@@ -38,7 +39,7 @@ class ErrorHandler extends P6StatelessWidget {
         DefaultPadding(
           child: FaIcon(
             FontAwesomeIcons.circleXmark,
-            color: P6Config.instance.color_danger,
+            color: P6Config.instance.colorDanger,
             size: 50,
           ),
         ),

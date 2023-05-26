@@ -3,72 +3,72 @@ import 'package:p6_base/config.dart';
 import 'package:p6_base/logger.dart';
 
 class Themes with Configuration {
-  static ThemeData get config => P6Config.instance.theme_simple_mode ? Themes().simpleTheme : Themes().theme;
+  static ThemeData get config => P6Config.instance.themeSimpleMode ? Themes().simpleTheme : Themes().theme;
 
-  final MaterialColor? color_primary;
-  final MaterialColor? color_secondary;
-  final Color? color_background;
-  final Color? color_foreground;
+  final MaterialColor? colorPrimary;
+  final MaterialColor? colorSecondary;
+  final Color? colorBackground;
+  final Color? colorForeground;
   final bool? darkMode;
 
   Themes({
-    this.color_primary,
-    this.color_secondary,
-    this.color_background,
-    this.color_foreground,
+    this.colorPrimary,
+    this.colorSecondary,
+    this.colorBackground,
+    this.colorForeground,
     this.darkMode,
   });
 
   /// Creates a new theme
   ThemeData get theme {
-    Logger.info('Loading theme ${configuration.theme} (${configuration.theme_dark_mode ? 'dark' : 'light'}|${configuration.theme_simple_mode ? 'simple' : 'normal'})');
+    Logger.info('Loading theme ${configuration.theme} (${configuration.themeDarkMode ? 'dark' : 'light'}|${configuration.themeSimpleMode ? 'simple' : 'normal'})');
     TextTheme textTheme = TextTheme(
       bodyMedium: TextStyle(
-        fontSize: configuration.font_size,
-        color: color_foreground ?? configuration.color_foreground,
+        fontSize: configuration.fontSize,
+        color: colorForeground ?? configuration.colorForeground,
       ),
     );
 
     return ThemeData(
       colorScheme: ColorScheme.fromSwatch(
-        primarySwatch: color_primary ?? configuration.color_primary,
-        primaryColorDark: color_primary ?? configuration.color_primary,
-        brightness: (darkMode ?? configuration.theme_dark_mode) ? Brightness.dark : Brightness.light,
+        primarySwatch: colorPrimary ?? configuration.colorPrimary,
+        primaryColorDark: colorPrimary ?? configuration.colorPrimary,
+        brightness: (darkMode ?? configuration.themeDarkMode) ? Brightness.dark : Brightness.light,
+        backgroundColor: colorBackground ?? configuration.colorBackground,
       ),
-      backgroundColor: color_background ?? configuration.color_background,
       buttonTheme: ButtonThemeData(
-        buttonColor: color_background ?? configuration.color_background,
-        disabledColor: color_foreground ?? configuration.color_foreground,
+        buttonColor: colorBackground ?? configuration.colorBackground,
+        disabledColor: colorForeground ?? configuration.colorForeground,
         textTheme: ButtonTextTheme.primary,
       ),
-      cardColor: color_background ?? configuration.color_background,
+      cardColor: colorBackground ?? configuration.colorBackground,
       cardTheme: CardTheme(
-        shadowColor: color_foreground ?? configuration.color_foreground,
-        color: color_background ?? configuration.color_background,
+        shadowColor: colorForeground ?? configuration.colorForeground,
+        color: colorBackground ?? configuration.colorBackground,
       ),
-      disabledColor: configuration.color_inactive,
-      dividerColor: color_secondary ?? configuration.color_secondary,
+      disabledColor: configuration.colorInactive,
+      dividerColor: colorSecondary ?? configuration.colorSecondary,
       drawerTheme: DrawerThemeData(
-        backgroundColor: color_background ?? configuration.color_background,
+        backgroundColor: colorBackground ?? configuration.colorBackground,
         elevation: 20,
-        scrimColor: color_background ?? configuration.color_background,
+        scrimColor: colorBackground ?? configuration.colorBackground,
         width: 0.8,
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: configuration.color_background,
+        fillColor: configuration.colorBackground,
       ),
-      primarySwatch: color_primary,
+      primarySwatch: colorPrimary,
       primaryTextTheme: textTheme,
-      scaffoldBackgroundColor: color_background ?? configuration.color_background,
+      scaffoldBackgroundColor: colorBackground ?? configuration.colorBackground,
       textTheme: textTheme,
     );
   }
 
   ThemeData get simpleTheme {
     ColorScheme colorScheme = ColorScheme.fromSwatch(
-      primarySwatch: color_primary ?? configuration.color_primary,
-      brightness: (darkMode ?? configuration.theme_dark_mode) ? Brightness.dark : Brightness.light,
+      primarySwatch: colorPrimary ?? configuration.colorPrimary,
+      brightness: (darkMode ?? configuration.themeDarkMode) ? Brightness.dark : Brightness.light,
     );
     // ColorScheme(
     //   background: color_background ?? Constants.color_background,
