@@ -1,17 +1,12 @@
 import 'package:p6_base/objects/config/check_https.dart';
-import 'package:p6_connect/checks/abstract_check.dart';
-import 'package:p6_connect/checks/online_status.dart';
+import 'package:p6_connect/checks/check_http.dart';
 
-class OnlineCheckHTTPS extends AbstractOnlineCheck {
-  final ConfigCheckHTTPS? config;
-
-  OnlineCheckHTTPS({required this.config});
+class OnlineCheckHTTPS extends OnlineCheckHTTP {
+  OnlineCheckHTTPS({required super.config});
+  ConfigCheckHTTPS? get _config => super.config as ConfigCheckHTTPS;
 
   @override
-  Future<ONLINE_STATUS> check() async {
-    if (config == null) {
-      return ONLINE_STATUS.UNKNOWN;
-    }
-    return ONLINE_STATUS.UNKNOWN;
+  Uri get uri {
+    return Uri.parse('https://${_config?.address}:${_config?.port ?? 443}${_config?.path ?? ''}');
   }
 }

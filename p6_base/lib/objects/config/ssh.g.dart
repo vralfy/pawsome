@@ -17,7 +17,7 @@ ConfigSSH _$ConfigSSHFromJson(Map<String, dynamic> json) => ConfigSSH(
 Map<String, dynamic> _$ConfigSSHToJson(ConfigSSH instance) => <String, dynamic>{
       'user': instance.user,
       'password': instance.password,
+      'key': instance.key,
       'address': instance.address,
       'port': instance.port,
-      'key': instance.key,
     };

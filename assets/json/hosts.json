@@ -12,48 +12,10 @@
       }
     },
     {
-      "name": "Example",
+      "name": "Example 2",
       "description": "This is just an example",
       "tag": ["example", "debian"],
-      "address": "8.8.8.8",
-      "ssh": {
-        "user": "root",
-        "password": "",
-        "key": ""
-      }
-    },
-    {
-      "name": "Example",
-      "description": "This is just an example",
-      "tag": ["example", "debian"],
-      "address": "8.8.8.8",
-      "ssh": {
-        "user": "root",
-        "password": "",
-        "key": ""
-      }
-    },
-    {
-      "name": "Example",
-      "description": "This is just an example",
-      "tag": ["example", "debian"],
-      "address": "8.8.8.8",
-      "ssh": {
-        "user": "root",
-        "password": "",
-        "key": ""
-      }
-    },
-    {
-      "name": "Example",
-      "description": "This is just an example",
-      "tag": ["example", "debian"],
-      "address": "8.8.8.8",
-      "ssh": {
-        "user": "root",
-        "password": "",
-        "key": ""
-      }
+      "address": "8.8.8.8"
     }
   ]
 }

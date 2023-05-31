@@ -10,11 +10,11 @@ class ConfigSSH extends AbstractObject {
   @JsonKey(defaultValue: null, disallowNullValue: false)
   final String? password;
   @JsonKey(defaultValue: null, disallowNullValue: false)
+  final String? key;
+  @JsonKey(defaultValue: null, disallowNullValue: false)
   final String? address;
   @JsonKey(defaultValue: 22, disallowNullValue: false)
   final int? port;
-  @JsonKey(defaultValue: null, disallowNullValue: false)
-  final String? key;
 
   ConfigSSH({
     required this.user,

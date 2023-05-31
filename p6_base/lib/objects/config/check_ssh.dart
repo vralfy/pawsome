@@ -6,6 +6,7 @@ part 'check_ssh.g.dart';
 @JsonSerializable()
 class ConfigCheckSSH extends ConfigCheckPort {
   ConfigCheckSSH({
+    required super.interval,
     required super.address,
     required super.port,
   });

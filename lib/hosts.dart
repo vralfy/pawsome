@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:p6_ui/padding/padding.dart';
 import 'package:p6_ui/view.dart';
 import 'package:p6_ui/widget.dart';
 import 'package:p6_ui/container/scrollcontainer.dart';
@@ -20,7 +21,18 @@ class HostState extends P6State<Hosts> {
       ScrollContainer(
         child: ResponsibleGrid(
           size: 2,
-          cells: configuration.remoteHosts.map((e) => ResponsibleGridCell(HostCard(host: e))).toList(),
+          cells: configuration.remoteHosts
+              .map(
+                (e) => ResponsibleGridCell(
+                  Expanded(
+                    child: DefaultPadding(
+                      verticalMultiplier: 10,
+                      child: HostCard(host: e),
+                    ),
+                  ),
+                ),
+              )
+              .toList(),
         ),
       ),
     );

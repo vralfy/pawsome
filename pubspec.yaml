@@ -29,6 +29,8 @@ flutter:
     - assets/
     - assets/json/
     - assets/json/i18n/
+    - assets/debug/
+    - assets/debug/json/
 
 # flutter_icons:
 #   android: "launcher_icon"

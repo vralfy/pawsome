@@ -37,13 +37,15 @@ class HostCard extends P6StatelessWidget {
                   ),
                 ),
               ),
-              Column(
-                children: [
-                  Headline1(text: host.name),
-                  Text(host.description),
-                  Text(host.address),
-                  Text(host.tag.join(', ')),
-                ],
+              Expanded(
+                child: Column(
+                  children: [
+                    Headline1(text: host.name),
+                    Text(host.description),
+                    Text(host.address),
+                    Text(host.tag.join(', ')),
+                  ],
+                ),
               ),
               DefaultPadding(child: HostOnlineIndicator(config: host.check)),
             ],

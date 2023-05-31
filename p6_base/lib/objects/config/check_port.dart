@@ -6,11 +6,14 @@ part 'check_port.g.dart';
 @JsonSerializable()
 class ConfigCheckPort extends AbstractObject {
   @JsonKey(defaultValue: null, disallowNullValue: false)
+  final int? interval;
+  @JsonKey(defaultValue: null, disallowNullValue: false)
   final String? address;
   @JsonKey(defaultValue: null, disallowNullValue: false)
   final int? port;
 
   ConfigCheckPort({
+    required this.interval,
     required this.address,
     required this.port,
   });

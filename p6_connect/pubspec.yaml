@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
   dartssh2: ^2.8.2
+  http: ^0.13.6
   network_tools: ^3.2.1
   p6_base:
     path: ../p6_base

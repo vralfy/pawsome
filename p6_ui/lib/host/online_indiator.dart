@@ -18,11 +18,10 @@ class HostOnlineIndicatorState extends P6State<HostOnlineIndicator> with TickerP
   ONLINE_STATUS status = ONLINE_STATUS.UNKNOWN;
 
   checkStatus() async {
+    status = await OnlineCheck(config: widget.config).check();
     while (true) {
-      await Future.delayed(const Duration(seconds: 5), () {
-        setState(() {
-          status = ONLINE_STATUS.UNKNOWN;
-        });
+      await Future.delayed(Duration(seconds: widget.config?.interval ?? 5), () {
+        // status = ONLINE_STATUS.UNKNOWN;
         OnlineCheck(config: widget.config).check().then((value) => status = value);
       });
     }
@@ -34,7 +33,7 @@ class HostOnlineIndicatorState extends P6State<HostOnlineIndicator> with TickerP
       /// [AnimationController]s can be created with `vsync: this` because of
       /// [TickerProviderStateMixin].
       vsync: this,
-      duration: const Duration(seconds: 2),
+      duration: Duration(seconds: widget.config?.interval ?? 5),
     )..addListener(() {
         setState(() {});
       });
@@ -46,7 +45,8 @@ class HostOnlineIndicatorState extends P6State<HostOnlineIndicator> with TickerP
   @override
   Widget build(BuildContext context) {
     return CircularProgressIndicator(
-      value: status == ONLINE_STATUS.UNKNOWN ? controller.value : 1,
+      value: controller.value,
+      strokeWidth: status == ONLINE_STATUS.UNKNOWN ? 4 : 8,
       color: () {
         switch (status) {
           case ONLINE_STATUS.ONLINE:

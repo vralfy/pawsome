@@ -7,6 +7,7 @@ part of 'check.dart';
 // **************************************************************************
 
 ConfigCheck _$ConfigCheckFromJson(Map<String, dynamic> json) => ConfigCheck(
+      interval: json['interval'] as int?,
       port: json['port'] == null
           ? null
           : ConfigCheckPort.fromJson(json['port'] as Map<String, dynamic>),
@@ -15,7 +16,7 @@ ConfigCheck _$ConfigCheckFromJson(Map<String, dynamic> json) => ConfigCheck(
           : ConfigCheckHTTP.fromJson(json['http'] as Map<String, dynamic>),
       https: json['https'] == null
           ? null
-          : ConfigCheckHTTP.fromJson(json['https'] as Map<String, dynamic>),
+          : ConfigCheckHTTPS.fromJson(json['https'] as Map<String, dynamic>),
       ssh: json['ssh'] == null
           ? null
           : ConfigCheckSSH.fromJson(json['ssh'] as Map<String, dynamic>),
@@ -23,6 +24,7 @@ ConfigCheck _$ConfigCheckFromJson(Map<String, dynamic> json) => ConfigCheck(
 
 Map<String, dynamic> _$ConfigCheckToJson(ConfigCheck instance) =>
     <String, dynamic>{
+      'interval': instance.interval,
       'port': instance.port,
       'http': instance.http,
       'https': instance.https,

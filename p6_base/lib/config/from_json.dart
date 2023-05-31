@@ -65,14 +65,28 @@ mixin ConfigFromJSON {
         Logger.debug('[config:${element.key}] unable to load from filesystem');
       }
 
-      try {
-        await rootBundle.loadString('assets/json/${element.value.path}').then((value) {
-          Logger.debug('[config:${element.key}] loaded from assets:${element.value.path}');
-          Logger.trace('[config:${element.key}] $value');
-          element.value.content = jsonDecode(value);
-        });
-      } catch (_) {
-        Logger.debug('[config:${element.key}] unable to load from assets');
+      if (element.value.content == null) {
+        try {
+          await rootBundle.loadString('assets/debug/json/${element.value.path}').then((value) {
+            Logger.debug('[config:${element.key}] loaded from assets_debug:${element.value.path}');
+            Logger.trace('[config:${element.key}] $value');
+            element.value.content = jsonDecode(value);
+          });
+        } catch (_) {
+          Logger.debug('[config:${element.key}] unable to load from assets_debug');
+        }
+      }
+
+      if (element.value.content == null) {
+        try {
+          await rootBundle.loadString('assets/json/${element.value.path}').then((value) {
+            Logger.debug('[config:${element.key}] loaded from assets:${element.value.path}');
+            Logger.trace('[config:${element.key}] $value');
+            element.value.content = jsonDecode(value);
+          });
+        } catch (_) {
+          Logger.debug('[config:${element.key}] unable to load from assets');
+        }
       }
     });
   }
