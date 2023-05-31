@@ -1,11 +1,12 @@
-name: Test
+name: Pawsome Programmable Personal Penguin Patch Patrol
 on:
   push:
-    branches: [ "main", "stage" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "main", "stage" ]
+    branches: [ "main" ]
+
 jobs:
-  build:
+  build-linux:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -15,8 +16,6 @@ jobs:
           channel: 'stable'
       - name: Flutter version
         run: flutter --version
-      - name: flutter doctor
-        run: flutter doctor
 
       - name: Install dependencies (main)
         run: flutter pub get
@@ -27,7 +26,11 @@ jobs:
       - name: Install dependencies (ui)
         run: cd p6_ui && flutter pub get
 
-      - name: Analyze project source
-        run: flutter analyze
-      - name: Run tests
-        run: flutter test
+      - name: Build Linux
+        run: flutter build linux
+
+      - name: Publish Artifacts
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: p6-linux
+          path: build/linux

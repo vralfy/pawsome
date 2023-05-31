@@ -1,0 +1,36 @@
+name: Pawsome Programmable Personal Penguin Patch Patrol
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.9'
+          channel: 'stable'
+      - name: Flutter version
+        run: flutter --version
+
+      - name: Install dependencies (main)
+        run: flutter pub get
+      - name: Install dependencies (base)
+        run: cd p6_base && flutter pub get
+      - name: Install dependencies (connect)
+        run: cd p6_connect && flutter pub get
+      - name: Install dependencies (ui)
+        run: cd p6_ui && flutter pub get
+
+      - name: Build Web
+        run: flutter build web
+
+      - name: Publish Artifacts
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: p6-web
+          path: build/web

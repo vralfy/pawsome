@@ -1,5 +1,9 @@
 # Pawsome Programmable Personal Penguin Patch Patrol
-[![Pawsome Programmable Personal Penguin Patch Patrol](https://github.com/vralfy/pawsome/actions/workflows/main.yml/badge.svg)](https://github.com/vralfy/pawsome/actions/workflows/main.yml)
+[![Test](https://github.com/vralfy/pawsome/actions/workflows/test.yml/badge.svg)](https://github.com/vralfy/pawsome/actions/workflows/test.yml)
+[![Github Pages](https://github.com/vralfy/pawsome/actions/workflows/github-page.yml/badge.svg)](https://github.com/vralfy/pawsome/actions/workflows/github-page.yml)
+
+[![Linux](https://github.com/vralfy/pawsome/actions/workflows/build-linux.yml/badge.svg)](https://github.com/vralfy/pawsome/actions/workflows/build-linux.yml)
+[![Web](https://github.com/vralfy/pawsome/actions/workflows/build-web.yml/badge.svg)](https://github.com/vralfy/pawsome/actions/workflows/build-web.yml)
 
 ## About
 
