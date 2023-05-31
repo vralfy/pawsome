@@ -37,7 +37,7 @@ jobs:
         run: flutter build web
 
       - name: Publish Artifacts
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3.1.2
         with:
           name: p6-web
           path: build/web
