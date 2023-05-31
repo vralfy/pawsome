@@ -20,10 +20,17 @@ jobs:
 
       - name: Install dependencies
         run: flutter pub get
+      - name: Install dependencies
+        run: cd p6_base && flutter pub get
+      - name: Install dependencies
+        run: cd p6_connect && flutter pub get
+      - name: Install dependencies
+        run: cd p6_ui && flutter pub get
+
       - name: Analyze project source
         run: flutter analyze
       - name: Run tests
         run: flutter test
-        
+
       - name: Build Windows
         run: flutter build windows
