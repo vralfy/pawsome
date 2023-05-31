@@ -4,8 +4,8 @@
 
 [![Windows](https://github.com/vralfy/pawsome/actions/workflows/build-windows.yml/badge.svg)](https://github.com/vralfy/pawsome/actions/workflows/build-windows.yml)
 [![Linux](https://github.com/vralfy/pawsome/actions/workflows/build-linux.yml/badge.svg)](https://github.com/vralfy/pawsome/actions/workflows/build-linux.yml)
-[![macOS](https://github.com/vralfy/pawsome/actions/workflows/build-linux.yml/badge.svg)](https://github.com/vralfy/pawsome/actions/workflows/build-linux.yml)
-[![Web](https://github.com/vralfy/pawsome/actions/workflows/build-macos.yml/badge.svg)](https://github.com/vralfy/pawsome/actions/workflows/build-macos.yml)
+[![macOS](https://github.com/vralfy/pawsome/actions/workflows/build-macos.yml/badge.svg)](https://github.com/vralfy/pawsome/actions/workflows/build-macos.yml)
+[![Wrb](https://github.com/vralfy/pawsome/actions/workflows/build-web.yml/badge.svg)](https://github.com/vralfy/pawsome/actions/workflows/build-web.yml)
 
 [![Android](https://github.com/vralfy/pawsome/actions/workflows/build-android.yml/badge.svg)](https://github.com/vralfy/pawsome/actions/workflows/build-android.yml)
 [![IOS](https://github.com/vralfy/pawsome/actions/workflows/build-ios.yml/badge.svg)](https://github.com/vralfy/pawsome/actions/workflows/build-ios.yml)

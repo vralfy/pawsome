@@ -31,17 +31,17 @@ jobs:
       - name: Build
         run: flutter build macos --release
 
+      - name: Publish Artifacts
+        uses: actions/upload-artifact@v3.1.2
+        with:
+          name: pawesome-${{github.ref_name}}-macos
+          path: build/macos/Build/Products/Release
       - name: Zip Aritfacts
         uses: thedoctor0/zip-release@master
         with:
           type: 'zip'
           filename: pawesome-${{github.ref_name}}-macos.zip
           directory: build/macos/Build/Products/Release
-      - name: Publish Artifacts
-        uses: actions/upload-artifact@v3.1.2
-        with:
-          name: pawesome-${{github.ref_name}}-macos.zip
-          path: build/macos/Build/Products/Release/pawesome-${{github.ref_name}}-macos.zip
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')

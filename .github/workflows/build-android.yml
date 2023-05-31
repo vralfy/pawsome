@@ -1,4 +1,4 @@
-name: Pawsome Linux
+name: Pawsome Android
 on:
   push:
     branches: [ "main" ]
@@ -29,26 +29,26 @@ jobs:
 
       - name: Generate intermediates
         run: flutter pub run build_runner build --delete-conflicting-outputs
-      - name: Enable linux build
-        run: flutter config --enable-linux-desktop
+      - name: Enable android build
+        run: flutter config --enable-android
       - name: Build
-        run: flutter build linux --release
+        run: flutter build android --release
 
-      - name: Publish Artifacts
-        uses: actions/upload-artifact@v3.1.2
-        with:
-          name: pawesome-${{github.ref_name}}-linux
-          path: build/linux/x64/release/bundle
-      - name: Zip Aritfacts
-        uses: thedoctor0/zip-release@master
-        with:
-          type: 'zip'
-          filename: pawesome-${{github.ref_name}}-linux.zip
-          directory: build/linux/x64/release/bundle
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          files: build/linux/x64/release/bundle/pawesome-${{github.ref_name}}-linux.zip
+      # - name: Publish Artifacts
+      #   uses: actions/upload-artifact@v3.1.2
+      #   with:
+      #     name: pawesome-${{github.ref_name}}-android
+      #     path: build/android/x64/release/bundle
+      # - name: Zip Aritfacts
+      #   uses: thedoctor0/zip-release@master
+      #   with:
+      #     type: 'zip'
+      #     filename: pawesome-${{github.ref_name}}-android.zip
+      #     directory: build/android/x64/release/bundle
+      # - name: Release
+      #   uses: softprops/action-gh-release@v1
+      #   if: startsWith(github.ref, 'refs/tags/')
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     files: build/android/x64/release/bundle/pawesome-${{github.ref_name}}-android.zip
