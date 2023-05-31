@@ -41,7 +41,7 @@ jobs:
         with:
           type: 'zip'
           filename: pawesome-${{github.ref_name}}-web.zip
-          directory: build/web/pawesome-${{github.ref_name}}-web.zip
+          directory: build/web
       - name: Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
