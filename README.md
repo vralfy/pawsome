@@ -1,4 +1,5 @@
 # Pawsome Programmable Personal Penguin Patch Patrol
+[![Pawsome Programmable Personal Penguin Patch Patrol](https://github.com/vralfy/pawsome/actions/workflows/main.yml/badge.svg)](https://github.com/vralfy/pawsome/actions/workflows/main.yml)
 
 ## About
 
