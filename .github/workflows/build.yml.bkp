@@ -1,4 +1,4 @@
-name: Pawsome Programmable Personal Penguin Patch Patrol
+name: Build
 on:
   push:
     branches: [ "main", "stage" ]
@@ -13,10 +13,6 @@ jobs:
         with:
           flutter-version: '3.7.9'
           channel: 'stable'
-      - name: Flutter version
-        run: flutter --version
-      - name: flutter doctor
-        run: flutter doctor
 
       - name: Install dependencies (main)
         run: flutter pub get
@@ -27,7 +23,5 @@ jobs:
       - name: Install dependencies (ui)
         run: cd p6_ui && flutter pub get
 
-      - name: Analyze project source
-        run: flutter analyze
-      - name: Run tests
-        run: flutter test
+      - name: Build Windows
+        run: flutter build windows
