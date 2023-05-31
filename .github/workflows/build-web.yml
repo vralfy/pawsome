@@ -1,4 +1,4 @@
-name: Pawsome Programmable Personal Penguin Patch Patrol
+name: Pawsome Web
 on:
   push:
     branches: [ "main" ]
