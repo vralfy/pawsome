@@ -32,11 +32,11 @@ jobs:
         with:
           type: 'zip'
           filename: pawesome-${{github.ref_name}}-web.zip
-          directory: build/web
+          directory: build/web/pawesome-${{github.ref_name}}-web.zip
       - name: Publish Artifacts
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: pawesome-${{github.ref_name}}-web
+          name: pawesome-${{github.ref_name}}-web.zip
           path: pawesome-${{github.ref_name}}-web.zip
       - name: Release
         uses: softprops/action-gh-release@v1
