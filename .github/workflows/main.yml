@@ -4,9 +4,17 @@ on:
     branches: [ "main", "stage" ]
   pull_request:
     branches: [ "main", "stage" ]
+
 jobs:
   prepare:
     runs-on: ubuntu-latest
+    steps:
+      - name: Greetings
+        run: echo "Pawsome Programmable Personal Penguin Patch Patrol"
+
+  build-web:
+    runs-on: ubuntu-latest
+    needs: prepare
     steps:
       - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
@@ -25,19 +33,30 @@ jobs:
       - name: Install dependencies (ui)
         run: cd p6_ui && flutter pub get
 
-  build-web:
-    runs-on: ubuntu-latest
-    needs: prepare
-    steps:
-      - uses: subosito/flutter-action@v2
-      - name: Build Windows
+      - name: Build Web
         run: flutter build web
 
   build-linux:
     runs-on: ubuntu-latest
     needs: prepare
     steps:
+      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.9'
+          channel: 'stable'
+      - name: Flutter version
+        run: flutter --version
+
+      - name: Install dependencies (main)
+        run: flutter pub get
+      - name: Install dependencies (base)
+        run: cd p6_base && flutter pub get
+      - name: Install dependencies (connect)
+        run: cd p6_connect && flutter pub get
+      - name: Install dependencies (ui)
+        run: cd p6_ui && flutter pub get
+
       - name: Build Linux
         run: flutter build linux
 
@@ -45,7 +64,23 @@ jobs:
     runs-on: ubuntu-latest
     needs: prepare
     steps:
+      - uses: actions/checkout@v3
       - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.9'
+          channel: 'stable'
+      - name: Flutter version
+        run: flutter --version
+
+      - name: Install dependencies (main)
+        run: flutter pub get
+      - name: Install dependencies (base)
+        run: cd p6_base && flutter pub get
+      - name: Install dependencies (connect)
+        run: cd p6_connect && flutter pub get
+      - name: Install dependencies (ui)
+        run: cd p6_ui && flutter pub get
+
       - name: flutter doctor
         run: flutter doctor
 
