@@ -10,6 +10,7 @@ class P6NavigationItems {
       return [
         const NavigationSidebarItem(title: 'Home', route: '/', icon: FontAwesomeIcons.house),
         const NavigationSidebarItem(title: 'Hosts', route: '/hosts', icon: FontAwesomeIcons.computer),
+        const NavigationSidebarItem(title: 'About', route: '/about', icon: FontAwesomeIcons.circleQuestion),
         const NavigationSidebarItem(title: 'Errors', route: '/error'),
       ];
     };

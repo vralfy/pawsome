@@ -14,6 +14,10 @@ class ConfigJsonFile {
 }
 
 mixin ConfigFromJSON {
+  Directory? directory_documents;
+  Directory? directory_temporary;
+  Directory? directory_download;
+
   final Map<String, ConfigJsonFile> jsonFiles = {
     "app": ConfigJsonFile(path: 'config.json', mandatory: true),
     "grid": ConfigJsonFile(path: 'grid.json', mandatory: false),
@@ -48,13 +52,20 @@ mixin ConfigFromJSON {
   }
 
   loadConfigFiles() async {
+    try {
+      directory_documents = await getApplicationDocumentsDirectory();
+      directory_temporary = await getTemporaryDirectory();
+      directory_download = await getDownloadsDirectory();
+    } catch (_) {
+      Logger.debug('[config] unable locate system directories');
+    }
+
     Logger.debug('[config] Loading config files');
     await Future.forEach(jsonFiles.entries.where((e) => e.value.content == null), (element) async {
       Logger.debug('[config:${element.key}] Loading config (${element.value.path})');
 
       try {
-        final localDirectory = await getApplicationDocumentsDirectory();
-        File config = File('${localDirectory.path}/${element.value.path}');
+        File config = File('${directory_documents?.path}/${element.value.path}');
         if (await config.exists()) {
           element.value.content = jsonDecode(await config.readAsString());
           Logger.debug('[config:${element.key}] config loaded ${config.path}');
