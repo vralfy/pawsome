@@ -1,4 +1,4 @@
-name: Pawsome Linux
+name: Pawsome MacOS
 on:
   push:
     branches: [ "main" ]
@@ -6,7 +6,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-linux:
+  build:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
@@ -14,9 +14,6 @@ jobs:
         with:
           flutter-version: '3.7.9'
           channel: 'stable'
-
-      - name: Install dependencies (system)
-        run: sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
 
       - name: Install dependencies (main)
         run: flutter pub get

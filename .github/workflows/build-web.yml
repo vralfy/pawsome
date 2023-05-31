@@ -6,7 +6,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build-web:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -24,7 +24,7 @@ jobs:
       - name: Install dependencies (ui)
         run: cd p6_ui && flutter pub get
 
-      - name: Build Web
+      - name: Build
         run: flutter build web
 
       - name: Zip Aritfacts
