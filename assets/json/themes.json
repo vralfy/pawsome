@@ -1,0 +1,28 @@
+{
+  "themes": {
+    "default": "dark",
+    "list": ["default", "dark"],
+    "themes": {
+      "default": {
+        "name": "Default",
+        "simple": false,
+        "darkMode": false,
+        "color": {
+          "primary": "640413",
+          "foreground": "333333",
+          "background": "FFFFFF"
+        }
+      },
+      "dark": {
+        "name": "Dark",
+        "simple": false,
+        "darkMode": true,
+        "color": {
+          "primary": "640413",
+          "foreground": "FFFFFF",
+          "background": "333333"
+        }
+      }
+    }
+  }
+}
