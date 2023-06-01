@@ -23,7 +23,7 @@ class OnlineCheckHTTP extends AbstractOnlineCheck {
     Logger.debug('Checking $uri');
 
     return await http
-        .get(uri) //
+        .head(uri) //
         .then((value) => value.statusCode >= 200 && value.statusCode < 300 ? ONLINE_STATUS.ONLINE : ONLINE_STATUS.OFFLINE)
         .onError(
       (error, stackTrace) {
