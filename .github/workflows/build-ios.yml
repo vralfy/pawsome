@@ -1,0 +1,51 @@
+name: Pawsome IOS
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.7.9'
+          channel: 'stable'
+
+      - name: Install dependencies (main)
+        run: flutter pub get
+      - name: Install dependencies (base)
+        run: cd p6_base && flutter pub get
+      - name: Install dependencies (connect)
+        run: cd p6_connect && flutter pub get
+      - name: Install dependencies (ui)
+        run: cd p6_ui && flutter pub get
+
+      - name: Generate intermediates
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+      - name: Enable ios build
+        run: flutter config --enable-ios
+      - name: Build
+        run: flutter build ios --release
+
+      # - name: Publish Artifacts
+      #   uses: actions/upload-artifact@v3.1.2
+      #   with:
+      #     name: pawesome-${{github.ref_name}}-ios
+      #     path: build/ios/Build/Products/Release
+      # - name: Zip Aritfacts
+      #   uses: thedoctor0/zip-release@master
+      #   with:
+      #     type: 'zip'
+      #     filename: pawesome-${{github.ref_name}}-ios.zip
+      #     directory: build/ios/Build/Products/Release
+      # - name: Release
+      #   uses: softprops/action-gh-release@v1
+      #   if: startsWith(github.ref, 'refs/tags/')
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     files: build/ios/Build/Products/Release/pawesome-${{github.ref_name}}-ios.zip

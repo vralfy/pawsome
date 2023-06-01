@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:p6/about.dart';
 import 'package:p6/hosts.dart';
 import 'package:p6/loading.dart';
 import 'package:p6/navigation.dart';
@@ -66,6 +67,7 @@ class P6MainState extends P6State<P6Main> {
         '/': (context) => const Welcome(),
         '/loading': (context) => const Loading(),
         '/hosts': (context) => const Hosts(),
+        '/about': (context) => const About(),
         '/error': (context) => const ErrorHandler(),
       },
     );

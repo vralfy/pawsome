@@ -14,6 +14,13 @@ class ConfigJsonFile {
 }
 
 mixin ConfigFromJSON {
+  Directory? directory_documents;
+  Directory? directory_download;
+  Directory? directory_external;
+  Directory? directory_library;
+  Directory? directory_support;
+  Directory? directory_temporary;
+
   final Map<String, ConfigJsonFile> jsonFiles = {
     "app": ConfigJsonFile(path: 'config.json', mandatory: true),
     "grid": ConfigJsonFile(path: 'grid.json', mandatory: false),
@@ -48,22 +55,32 @@ mixin ConfigFromJSON {
   }
 
   loadConfigFiles() async {
+    await _locateSystemDirectories();
     Logger.debug('[config] Loading config files');
     await Future.forEach(jsonFiles.entries.where((e) => e.value.content == null), (element) async {
       Logger.debug('[config:${element.key}] Loading config (${element.value.path})');
-
-      try {
-        final localDirectory = await getApplicationDocumentsDirectory();
-        File config = File('${localDirectory.path}/${element.value.path}');
-        if (await config.exists()) {
-          element.value.content = jsonDecode(await config.readAsString());
-          Logger.debug('[config:${element.key}] config loaded ${config.path}');
-          return;
+      [
+        directory_temporary,
+        directory_external,
+        directory_library,
+        directory_support,
+        directory_documents,
+        directory_download,
+      ].where((element) => element != null).forEach((directory) {
+        if (element.value.content == null) {
+          try {
+            File config = File('${directory?.path}/${element.value.path}');
+            if (config.existsSync()) {
+              element.value.content = jsonDecode(config.readAsStringSync());
+              Logger.debug('[config:${element.key}] config loaded ${config.path}');
+              return;
+            }
+            Logger.debug('[config:${element.key}] does not exist at ${config.path}');
+          } catch (_) {
+            Logger.debug('[config:${element.key}] unable to load from filesystem');
+          }
         }
-        Logger.debug('[config:${element.key}] does not exist at ${config.path}');
-      } catch (_) {
-        Logger.debug('[config:${element.key}] unable to load from filesystem');
-      }
+      });
 
       if (element.value.content == null) {
         try {
@@ -89,6 +106,44 @@ mixin ConfigFromJSON {
         }
       }
     });
+  }
+
+  _locateSystemDirectories() async {
+    try {
+      directory_documents = await getApplicationDocumentsDirectory();
+    } catch (_) {
+      Logger.debug('[config] unable locate document directory');
+    }
+
+    try {
+      directory_download = await getDownloadsDirectory();
+    } catch (_) {
+      Logger.debug('[config] unable locate download directory');
+    }
+
+    try {
+      directory_external = await getExternalStorageDirectory();
+    } catch (_) {
+      Logger.debug('[config] unable locate temporary directory');
+    }
+
+    try {
+      directory_library = await getLibraryDirectory();
+    } catch (_) {
+      Logger.debug('[config] unable locate library directory');
+    }
+
+    try {
+      directory_support = await getApplicationSupportDirectory();
+    } catch (_) {
+      Logger.debug('[config] unable locate support directory');
+    }
+
+    try {
+      directory_temporary = await getTemporaryDirectory();
+    } catch (_) {
+      Logger.debug('[config] unable locate temporary directory');
+    }
   }
 
   dynamic getByPath({List<String>? list, String? str, dynamic defaultValue, dynamic config}) {
