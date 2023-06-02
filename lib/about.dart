@@ -21,6 +21,11 @@ class About extends P6StatelessWidget {
               children: [
                 TableRow(children: [
                   const Text("Config directories:"),
+                  const Text('Current: '),
+                  Text(configuration.directory_current?.path ?? 'unknown'),
+                ]),
+                TableRow(children: [
+                  const Text(""),
                   const Text('Temp: '),
                   Text(configuration.directory_temporary?.path ?? 'unknown'),
                 ]),

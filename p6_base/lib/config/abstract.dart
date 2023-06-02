@@ -1,6 +1,7 @@
 import 'package:p6_base/config.dart';
 import 'package:p6_base/config/application.dart';
 import 'package:p6_base/config/defaults.dart';
+import 'package:p6_base/config/directory.dart';
 import 'package:p6_base/config/feature.dart';
 import 'package:p6_base/config/from_context.dart';
 import 'package:p6_base/config/from_json.dart';
@@ -17,6 +18,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class AbstractConfig
     with //
+        ConfigDirectory,
         ConfigFromContext,
         ConfigFromJSON,
         ConfigFromPackage,
